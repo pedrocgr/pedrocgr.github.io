@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festa de Pedro</title>
+    <style>
+   
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000;
+            animation: color-change 2s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes color-change {
+            0% { color: #ff0000; }
+            25% { color: #00ff00; }
+            50% { color: #0000ff; }
+            75% { color: #ff00ff; }
+            100% { color: #ff0000; }
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #6600cc;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #subtitle{
+            color: paleturquoise;
+        }
+        #entrance-text{
+            font-size: 1em;
+            color: #3f0ec4;
+        }
+
+
+        .star {
+            position: absolute;
+            background-color: #FFF;
+            width: 2px;
+            height: 3px;
+            animation: moveStar 1s linear infinite;
+        }
+
+        @keyframes moveStar {
+            0% {
+                transform: translateY(-1000%);
+            }
+            100% {
+                transform: translateY(+1000%);
+            }
+        }
+
+        /* Added CSS for the image */
+        img {
+            position: relative;
+            z-index: 1;
+            width: 45%;
+            height: auto;
+        }
+        p + p{
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+<body onload="generateStars()">
+    <div id="background"></div>
+    <div id="stars-container"></div>
+    <h1>Venha comemorar o aniversário de Pedro!</h1>
+    <p id="subtitle">Muito pagode e bebida barata!</p><br>
+    <p id="subtitle">Data: 15.04.23</p>
+    <p id="subtitle">Hora: 16hrs</p>
+    <p id="subtitle">Local: Minha casa ;) </p> <br>
+
+
+    <p id="entrance-text">Como entrar:</p>
+
+    <img src="portao.jpg" alt="Portão lascado para entrar">
+    <p id="entrance-text">Como estamos em construção, podem abrir o portão normalmente com a mão mas lembrem de fechar! Não deixem os cachorros fugirem!</p>
+    <p id="entrance-text"> Isso também serve para o portão da minha casa </p>
+
+    <audio src="song.mp3" autoplay volume="0.5" controls></audio>
+
+    <script>
+        function generateStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const numStars = 600;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.top = Math.random() * window.innerHeight + 'px';
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                star.style.animationDuration = (Math.random() * 1 + 1) + 's';
+                star.style.animationDelay = (Math.random() * 2) + 's';
+
+                starsContainer.appendChild(star);
+            }
+        }
+    </script>
+</body>
